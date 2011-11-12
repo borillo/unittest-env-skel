@@ -1,0 +1,7 @@
+Startup environmets for unit testing on different languages:
+
+* Groovy with Spock
+* Python
+* Ruby with RSpec and RVM
+* Ruby with Cucumber and RVM
+* JavaScript with Jasmine
