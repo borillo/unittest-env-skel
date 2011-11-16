@@ -1,21 +1,15 @@
 import unittest
 
-class Calculator:
-   def add(self, left, right):
-       return left+right
+class Life:
+   def rocks(self):
+       return "rocks"
 
-   def minus(self, left, right):
-       return left-right
-
-class CalculatorTest(unittest.TestCase):
+class LifeTest(unittest.TestCase):
    def setUp(self):
-       self.calculator = Calculator()
+       self.life = Life()
 
-   def test_can_add(self):
-       self.assertEquals(5, self.calculator.add(2, 3))
-
-   def test_can_minus(self):
-       self.assertEquals(3, self.calculator.minus(5, 2))
+   def test_rocks(self):
+       self.assertEquals("rocks", self.life.rocks())
 
 if __name__ == '__main__':
   unittest.main()
