@@ -12,7 +12,7 @@ use Behat\Gherkin\Node\PyStringNode,
 //   require_once 'PHPUnit/Autoload.php';
 //   require_once 'PHPUnit/Framework/Assert/Functions.php';
 
-require_once __DIR__.'/../../lib/Calculator.php';
+require_once __DIR__.'/../../lib/Life.php';
 
 /**
  * Features context.
@@ -21,7 +21,6 @@ class FeatureContext extends BehatContext
 {
 
     private $result;
-    private $operands;
 
     /**
      * Initializes context.
@@ -32,36 +31,32 @@ class FeatureContext extends BehatContext
     public function __construct(array $parameters)
     {
         // Initialize your context here
-        $this->calculator = new Calculator();
-        $this->operands = array();
-        $this->result = null;
     }
 
     /**
-     * @Given /^I have entered (\d+) into the calculator$/
+     * @Given /^I have called rocks method$/
      */
-    public function iHaveEnteredIntoTheCalculator($operand)
+    public function iHaveCalledRocksMethod()
     {
-        $this->operands[] = $operand;
+        $this->life = new Life();
     }
 
     /**
-     * @When /^I run "([^"]*)"$/
+     * @When /^I ask for$/
      */
-    public function iRun($method)
+    public function iAskFor()
     {
-        $this->result = $this->calculator->$method($this->operands[0],$this->operands[1]);
+        $this->result = $this->life->rocks();
     }
 
     /**
-     * @Then /^I should get (\d+)$/
+     * @Then /^I get "([^"]*)"$/
      */
-    public function iShouldGet($result)
+    public function iGet($result)
     {
         if ($this->result != $result)
         {
           throw new Exception("Actual result is: \n" . $this->result);
-        }
+        }       
     }
-
 }
